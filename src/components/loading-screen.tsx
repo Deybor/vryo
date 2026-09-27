@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -77,9 +78,10 @@ function PageGate({ children }: { children: React.ReactNode }) {
   return <ReadyContext.Provider value={ready}>
     <div ref={root} inert={!revealed} aria-hidden={!revealed} style={{ visibility: revealed ? "visible" : "hidden" }}>{children}</div>
     {!removed && <div className={`vyro-loader${revealed ? " is-ready" : ""}`} role="status" aria-label="Loading VYRO">
-      <div className="vyro-ident" aria-hidden="true"><div className="vyro-aperture"><div className="vyro-chrome"><img className="vyro-chrome-motion" src="/brand/loading-chrome.svg" alt="" /><img className="vyro-chrome-still" src="/brand/wordmark.svg" alt="" /></div></div><p className="vyro-ident-caption">Make the product felt.</p></div>
+      <div className="vyro-ident" aria-hidden="true"><div className="vyro-aperture"><div className="vyro-chrome"><img className="vyro-chrome-motion" src={asset("/brand/loading-chrome.svg")} alt="" /><img className="vyro-chrome-still" src={asset("/brand/wordmark.svg")} alt="" /></div></div><p className="vyro-ident-caption">Make the product felt.</p></div>
     </div>}
   </ReadyContext.Provider>;
 }
+
 
 

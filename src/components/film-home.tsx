@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { usePageReady } from "@/components/loading-screen";
 import { Link } from "@tanstack/react-router";
 import gsap from "gsap";
@@ -12,29 +13,29 @@ const beats = [
   {
     kicker: "Direction",
     line: "Direct the picture before you make it.",
-    image: "/work/fold.jpg",
-    film: "/work/fold.mp4",
+    image: asset("/work/fold.jpg"),
+    film: asset("/work/fold.mp4"),
     alt: "A brushed aluminium object, half open, with the hinge catching a single light against a dark ground.",
   },
   {
     kicker: "Material",
     line: "Let the material introduce itself.",
-    image: "/work/vessel.jpg",
-    film: "/work/vessel.mp4",
+    image: asset("/work/vessel.jpg"),
+    film: asset("/work/vessel.mp4"),
     alt: "An unlabelled clear glass vessel holding a deep red liquid, lit from the side on a warm paper ground.",
   },
   {
     kicker: "Mechanism",
     line: "The fit has to read before the whole product.",
-    image: "/work/tolerance.jpg",
-    film: "/work/tolerance.mp4",
+    image: asset("/work/tolerance.jpg"),
+    film: asset("/work/tolerance.mp4"),
     alt: "Extreme close-up of a brushed steel hinge, with light raking across the metal grain.",
   },
   {
     kicker: "Hold",
     line: "Hold until the weight is felt.",
-    image: "/work/drape.jpg",
-    film: "/work/drape.mp4",
+    image: asset("/work/drape.jpg"),
+    film: asset("/work/drape.mp4"),
     alt: "Heavy oxblood silk falling in one fold over a matte chalk form.",
   },
 ];
@@ -231,8 +232,8 @@ export function FilmHome() {
       <section className="hero" data-chapter="Opening">
         <div className="hero-media">
           <CampaignFilm
-            src="/work/fold.mp4"
-            poster="/work/fold.jpg"
+            src={asset("/work/fold.mp4")}
+            poster={asset("/work/fold.jpg")}
             alt="A brushed aluminium object, half open, with the hinge catching a single light against a dark ground."
             width={1792}
             height={1008}
@@ -376,14 +377,14 @@ export function FilmHome() {
       <section data-chapter="Territories" aria-label="Who the work is for">
         <div className="grid md:grid-cols-2">
           <Territory
-            image="/work/tolerance.jpg"
+            image={asset("/work/tolerance.jpg")}
             alt="Extreme close-up of a brushed steel hinge, with light raking across the metal grain."
             label={territoryCopy.technology.label}
             title="Hard to show. Necessary to feel."
             body={territoryCopy.technology.body}
           />
           <Territory
-            image="/work/drape.jpg"
+            image={asset("/work/drape.jpg")}
             alt="Heavy oxblood silk falling in one fold over a matte chalk form."
             label={territoryCopy.material.label}
             title="Form, material, and the detail that carries it."
@@ -478,4 +479,5 @@ function ChapterWatch() {
 
   return null;
 }
+
 

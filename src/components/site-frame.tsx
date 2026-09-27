@@ -18,7 +18,9 @@ function isCurrent(path: string, to: string) {
 }
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
-  const path = useRouterState({ select: (state) => state.location.pathname });
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const path = (base && pathname.startsWith(base + "/") ? pathname.slice(base.length) : pathname === base ? "/" : pathname).replace(/\/$/, "") || "/";
   const [open, setOpen] = useState(false);
   const [chapter, setChapter] = useState("Opening");
   const clockRef = useRef<HTMLSpanElement>(null);
@@ -249,4 +251,5 @@ function Cursor() {
     </div>
   );
 }
+
 

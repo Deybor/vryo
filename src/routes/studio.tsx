@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/studio")({
@@ -20,7 +21,7 @@ const letters = [
     name: "Vision",
     line: "Find the product truth.",
     body: "Name the audience, the useful difference and the feeling the campaign should leave.",
-    image: "/work/fold.jpg",
+    image: asset("/work/fold.jpg"),
     ground: "bg-carbon text-chalk",
   },
   {
@@ -28,7 +29,7 @@ const letters = [
     name: "Yield",
     line: "Make the idea produce.",
     body: "Turn the direction into useful, purposeful work. Yield means tangible output. It is not a sales guarantee.",
-    image: "/work/vessel.jpg",
+    image: asset("/work/vessel.jpg"),
     ground: "bg-oxblood text-chalk",
   },
   {
@@ -36,7 +37,7 @@ const letters = [
     name: "Refine",
     line: "Make each choice earn its place.",
     body: "Test the light, timing, type and composition. Remove anything that weakens the idea.",
-    image: "/work/joint.jpg",
+    image: asset("/work/joint.jpg"),
     ground: "bg-chalk text-carbon",
   },
   {
@@ -44,7 +45,7 @@ const letters = [
     name: "Own",
     line: "Take responsibility for the finish.",
     body: "Carry the agreed direction through delivery. Own means accountability for quality, not a claim over client rights.",
-    image: "/work/drape.jpg",
+    image: asset("/work/drape.jpg"),
     ground: "bg-carbon text-chalk",
   },
 ];
@@ -240,5 +241,6 @@ function Studio() {
     </>
   );
 }
+
 
 

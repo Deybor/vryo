@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 export type Territory = "technology" | "material";
 
 export type CampaignPiece = {
@@ -42,8 +43,8 @@ export const studies: Study[] = [
     title: "The fold",
     territory: "technology",
     decision: "Directed around a brushed-metal finish and the folding mechanism.",
-    image: "/work/fold.jpg",
-    film: "/work/fold.mp4",
+    image: asset("/work/fold.jpg"),
+    film: asset("/work/fold.mp4"),
     duration: "0:06",
     width: 1792,
     height: 1008,
@@ -66,8 +67,8 @@ export const studies: Study[] = [
     title: "The vessel",
     territory: "material",
     decision: "Glass thickness and the colour of the liquid carry the frame before the full object is named.",
-    image: "/work/vessel.jpg",
-    film: "/work/vessel.mp4",
+    image: asset("/work/vessel.jpg"),
+    film: asset("/work/vessel.mp4"),
     duration: "0:06",
     width: 1728,
     height: 1152,
@@ -90,8 +91,8 @@ export const studies: Study[] = [
     title: "The joint",
     territory: "material",
     decision: "The piece is introduced at the timber joint, then allowed to become a whole object.",
-    image: "/work/joint.jpg",
-    film: "/work/joint.mp4",
+    image: asset("/work/joint.jpg"),
+    film: asset("/work/joint.mp4"),
     duration: "0:06",
     width: 1792,
     height: 1008,
@@ -114,8 +115,8 @@ export const studies: Study[] = [
     title: "The tolerance",
     territory: "technology",
     decision: "Grazing light makes a machined joint readable before the whole product appears.",
-    image: "/work/tolerance.jpg",
-    film: "/work/tolerance.mp4",
+    image: asset("/work/tolerance.jpg"),
+    film: asset("/work/tolerance.mp4"),
     duration: "0:06",
     width: 1728,
     height: 1152,
@@ -138,8 +139,8 @@ export const studies: Study[] = [
     title: "The drape",
     territory: "material",
     decision: "Fabric weight and a single light, held long enough to read.",
-    image: "/work/drape.jpg",
-    film: "/work/drape.mp4",
+    image: asset("/work/drape.jpg"),
+    film: asset("/work/drape.mp4"),
     duration: "0:06",
     width: 1728,
     height: 1152,
@@ -166,3 +167,4 @@ export function getStudy(slug: string) {
 export function territoryLabel(territory: Territory) {
   return territory === "technology" ? "Technology" : "Design-led";
 }
+

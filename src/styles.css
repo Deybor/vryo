@@ -75,7 +75,7 @@
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: -0.045em;
-  line-height: 0.86;
+  line-height: 1.04;
   font-size: clamp(3.5rem, 11.4vw, 10.8rem);
 }
 
@@ -83,7 +83,7 @@
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: -0.035em;
-  line-height: 0.92;
+  line-height: 1.06;
   font-size: clamp(2.75rem, 6.4vw, 6.25rem);
 }
 
@@ -538,14 +538,47 @@ video {
   }
 }
 
-.vyro-loader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; background: #000; transition: opacity .65s ease, visibility .65s; cursor: wait; }
+.vyro-loader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; background: #050505; transition: opacity .65s ease, visibility .65s; cursor: wait; }
 .vyro-loader.is-ready { opacity: 0; visibility: hidden; pointer-events: none; }
-.vyro-chrome { width: min(78vw, 1050px); animation: chrome-emerge 1.4s cubic-bezier(.16,1,.3,1) both; }
+.vyro-ident { width: min(72vw, 840px); position: relative; }
+.vyro-aperture { padding: 2% 0; animation: ident-aperture 1.8s cubic-bezier(.76,0,.24,1) both; }
+.vyro-chrome { width: 100%; transform-origin: 48% 50%; animation: ident-resolve 2s cubic-bezier(.16,1,.3,1) both; }
 .vyro-chrome img { display: block; width: 100%; height: auto; }
 .vyro-chrome .vyro-chrome-still { display: none; }
-@keyframes chrome-emerge { from { opacity: 0; transform: scale(.97); filter: blur(4px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+.vyro-ident-caption { position: absolute; top: calc(100% + 32px); width: 100%; text-align: center; color: #b8bbc2; font-size: clamp(11px, 1vw, 13px); font-weight: 400; letter-spacing: .12em; animation: ident-caption .8s 1.5s ease both; }
+@keyframes ident-aperture {
+ 0% { clip-path: inset(49.8% 50%); opacity: 0; }
+ 12% { clip-path: inset(49.8% 35%); opacity: 1; }
+ 38% { clip-path: inset(48.5% 0); opacity: 1; }
+ 100% { clip-path: inset(0); opacity: 1; }
+}
+@keyframes ident-resolve {
+ 0% { transform: scale(1.65) translateX(4%); filter: brightness(.6); }
+ 100% { transform: scale(1) translateX(0); filter: brightness(1); }
+}
+@keyframes ident-caption { from { opacity: 0; transform: translateY(6px); } to { opacity: .75; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {
- .vyro-chrome { animation: none; }
+ .vyro-aperture, .vyro-chrome, .vyro-ident-caption { animation: none; }
  .vyro-chrome .vyro-chrome-motion { display: none; }
  .vyro-chrome .vyro-chrome-still { display: block; filter: invert(1); opacity: .85; }
 }
+/* A full reading interval before each Studio panel gives way. */
+.letter-stage { position: relative; min-height: 170svh; background: #171719; }
+.letter-card { height: 100svh; min-height: 620px; justify-content: center; padding-bottom: 6rem; }
+.letter-copy { width: min(100%, 32rem); }
+.letter-fill { top: 24%; left: 3%; font-size: clamp(10rem, 30vw, 26rem); line-height: 1; }
+@media (max-width: 767px) {
+ .letter-stage { min-height: 150svh; }
+ .letter-card { min-height: 700px; justify-content: flex-start; padding-top: 7rem; gap: 2rem; }
+ .letter-fill { position: relative; top: auto; left: auto; font-size: clamp(8rem, 28vw, 12rem); flex-shrink: 0; }
+ .letter-copy { margin-top: auto; }
+}
+@media (max-height: 700px) and (min-width: 768px) {
+ .letter-card { min-height: 540px; }
+ .letter-fill { font-size: 12rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .letter-stage { min-height: 0; }
+ .letter-card { position: relative; height: auto; min-height: 650px; }
+}
+

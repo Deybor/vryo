@@ -105,7 +105,7 @@ function Studio() {
           Vision. Yield. Refine. Own.
         </h2>
         {letters.map((letter, index) => (
-          <article key={letter.mark} className={`letter-card ${letter.ground}`} style={{ zIndex: index + 1 }}>
+          <div key={letter.mark} className="letter-stage" style={{ zIndex: index + 1 }}><article className={`letter-card ${letter.ground}`}>
             <p
               className="letter-fill"
               style={{ backgroundImage: `url(${letter.image})` }}
@@ -113,13 +113,13 @@ function Studio() {
             >
               {letter.mark}
             </p>
-            <div className="relative z-10 max-w-md md:ml-auto">
+            <div className="letter-copy relative z-10 max-w-md md:ml-auto">
               <p className="label">{letter.mark}</p>
               <h3 className="display-xl mt-3">{letter.name}</h3>
               <p className="mt-4 text-xl">{letter.line}</p>
               <p className="mt-3 max-w-prose">{letter.body}</p>
             </div>
-          </article>
+          </article></div>
         ))}
       </section>
 
@@ -240,3 +240,5 @@ function Studio() {
     </>
   );
 }
+
+

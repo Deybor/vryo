@@ -44,7 +44,7 @@ function PageGate({ children }: { children: React.ReactNode }) {
       let timeout: ReturnType<typeof setTimeout>;
       let minimum: ReturnType<typeof setTimeout>;
       const deadline = new Promise<void>(resolve => { timeout = setTimeout(resolve, 8000); });
-      const intro = new Promise<void>(resolve => { minimum = setTimeout(resolve, 2200); });
+      const intro = new Promise<void>(resolve => { minimum = setTimeout(resolve, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 2600); });
       cleanup.push(() => { clearTimeout(timeout); clearTimeout(minimum); });
       void Promise.all([intro, Promise.race([Promise.allSettled([document.fonts.ready, ...assets]), deadline])]).then(() => {
         if (!cancelled) setReady(true);
@@ -77,8 +77,9 @@ function PageGate({ children }: { children: React.ReactNode }) {
   return <ReadyContext.Provider value={ready}>
     <div ref={root} inert={!revealed} aria-hidden={!revealed} style={{ visibility: revealed ? "visible" : "hidden" }}>{children}</div>
     {!removed && <div className={`vyro-loader${revealed ? " is-ready" : ""}`} role="status" aria-label="Loading VYRO">
-      <div className="vyro-chrome" aria-hidden="true"><img className="vyro-chrome-motion" src="/brand/loading-chrome.svg" alt="" /><img className="vyro-chrome-still" src="/brand/wordmark.svg" alt="" /></div>
+      <div className="vyro-ident" aria-hidden="true"><div className="vyro-aperture"><div className="vyro-chrome"><img className="vyro-chrome-motion" src="/brand/loading-chrome.svg" alt="" /><img className="vyro-chrome-still" src="/brand/wordmark.svg" alt="" /></div></div><p className="vyro-ident-caption">Make the product felt.</p></div>
     </div>}
   </ReadyContext.Provider>;
 }
+
 
